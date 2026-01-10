@@ -22,7 +22,7 @@ android {
 
     packaging {
         resources {
-            excludes += "META-INF/INDEX.LIST"
+            excludes += listOf("META-INF/INDEX.LIST", "META-INF/DEPENDENCIES", "META-INF/LICENSE", "META-INF/LICENSE.txt", "META-INF/io.netty.versions.properties")
         }
     }
 
@@ -70,5 +70,8 @@ dependencies {
     implementation(libs.moshi.converter)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
+
+    implementation(libs.moshi.kotlin)
+
 
 }
