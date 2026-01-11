@@ -73,5 +73,6 @@ dependencies {
 
     implementation(libs.moshi.kotlin)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.navigation.compose)
 
 }
