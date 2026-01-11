@@ -7,4 +7,8 @@ class UserRepository {
     suspend fun fetchUsers(): List<User> {
         return RetrofitInstance.api.getUsers()
     }
+
+    suspend fun fetchUser(userId: Int): User {
+        return RetrofitInstance.api.getUser(userId)
+    }
 }

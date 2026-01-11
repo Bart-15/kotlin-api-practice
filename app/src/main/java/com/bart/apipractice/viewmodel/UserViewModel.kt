@@ -3,6 +3,7 @@ package com.bart.apipractice.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bart.apipractice.repository.UserRepository
+import com.bart.apipractice.ui.compose.users.UserDetailUiState
 import com.bart.apipractice.ui.compose.users.UserUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -33,5 +34,22 @@ class UserViewModel(
         }
     }
 
+
+    private val _userDetailUiState = MutableStateFlow<UserDetailUiState>(UserDetailUiState.Loading)
+    val userUiState: StateFlow<UserDetailUiState> = _userDetailUiState
+
+
+    fun fetchByUserId(id: Int){
+        viewModelScope.launch {
+            _userDetailUiState.value = UserDetailUiState.Loading
+
+            try {
+                val user = repository.fetchUser(id)
+                _userDetailUiState.value = UserDetailUiState.Success(user)
+            } catch (e: Exception) {
+                _userDetailUiState.value = UserDetailUiState.Error(e.message ?: "Failed to load user")
+            }
+        }
+    }
 
 }
