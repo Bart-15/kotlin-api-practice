@@ -72,6 +72,6 @@ dependencies {
     implementation(libs.coroutines.android)
 
     implementation(libs.moshi.kotlin)
-
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
 }
