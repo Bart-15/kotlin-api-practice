@@ -18,10 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.graphics.Color
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.bart.apipractice.repository.UserRepository
 import com.bart.apipractice.viewmodel.UserViewModel
-import com.bart.apipractice.viewmodel.UserViewModelFactory
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.getValue
@@ -29,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.bart.apipractice.model.Address
 import com.bart.apipractice.model.Company
@@ -40,7 +38,7 @@ import com.bart.apipractice.model.User
 fun UserDetailScreen(
     userId: Int,
     onBackClick: () -> Unit,
-    viewModel: UserViewModel = viewModel(factory = UserViewModelFactory(UserRepository()))
+    viewModel: UserViewModel = hiltViewModel()
 ) {
 
     LaunchedEffect(userId) {
