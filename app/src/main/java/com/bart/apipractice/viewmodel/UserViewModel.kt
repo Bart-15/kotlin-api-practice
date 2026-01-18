@@ -23,6 +23,7 @@ class UserViewModel @Inject constructor(
         fetchUsers()
     }
 
+
     private fun fetchUsers() {
         viewModelScope.launch {
             _usersUiState.value = UserUiState.Loading
