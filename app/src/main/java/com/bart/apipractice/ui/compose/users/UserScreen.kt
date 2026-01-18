@@ -17,22 +17,18 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.bart.apipractice.repository.UserRepository
 import com.bart.apipractice.viewmodel.UserViewModel
-import com.bart.apipractice.viewmodel.UserViewModelFactory
 
 @Composable
 fun UserScreen(
     modifier: Modifier = Modifier,
-    onUserClick: (Int) -> Unit
+    onUserClick: (Int) -> Unit,
+    viewModel: UserViewModel = hiltViewModel()
 ){
     val context = LocalContext.current
 
-    val viewModel: UserViewModel = viewModel(
-        factory = UserViewModelFactory(UserRepository())
-    )
 
     val uiState by viewModel.usersUiState.collectAsStateWithLifecycle()
 

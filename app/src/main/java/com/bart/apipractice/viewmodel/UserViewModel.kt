@@ -5,13 +5,16 @@ import androidx.lifecycle.viewModelScope
 import com.bart.apipractice.repository.UserRepository
 import com.bart.apipractice.ui.compose.users.UserDetailUiState
 import com.bart.apipractice.ui.compose.users.UserUiState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class UserViewModel(
+@HiltViewModel
+class UserViewModel @Inject constructor(
     private val repository: UserRepository
-): ViewModel() {
+) : ViewModel() {
 
     private val _usersUiState = MutableStateFlow<UserUiState>(UserUiState.Loading)
     val usersUiState: StateFlow<UserUiState> = _usersUiState
