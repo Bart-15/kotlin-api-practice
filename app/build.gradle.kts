@@ -88,4 +88,11 @@ dependencies {
     implementation(libs.hilt)
     ksp(libs.hilt.compiler) // Use `ksp` instead of `kapt`
     implementation(libs.androidx.hilt.navigation.compose)
+
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.mockk)
+    // Kotlin test support
+    testImplementation(libs.kotlin.test)
+    // Coroutines Test (if you use coroutines)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
